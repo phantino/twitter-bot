@@ -9,10 +9,17 @@ API_SECRET = "D1lYFKBgAcwAuNRQjtdToHb7gGbDngYZWUlZHYW1BO3Ik3zJZH"
 ACCESS_TOKEN = "1318929592938385410-dkk3UgKgPWH8uPyGzOTYiADAQ1YvD8"
 ACCESS_SECRET = "AgQVovE4Xb7fLuhUtFgeWrERyIC1MRYaRQKv1RrXo96mS"
 
-# Authenticate with Twitter API
+# Authenticate with Twitter
 auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-api = tweepy.API(auth, wait_on_rate_limit=True)
+api = tweepy.API(auth)
+
+# Send a test tweet
+try:
+    api.update_status("🚀 Twitter bot test from Railway!")
+    print("✅ Tweet sent successfully!")
+except Exception as e:
+    print(f"❌ Error: {e}")
 
 # Educational and market insights tweets
 educational_tweets = [
